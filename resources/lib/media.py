@@ -247,16 +247,16 @@ class Media(object):
 
     def similar(self):
         ''' get similar movies and similar tvshows for given imdbid'''
-        all_items = self.movies.similar()
-        all_items += self.tvshows.similar()
-        all_items += self.albums.similar()
-        all_items += self.songs.similar()
+        all_items = self.movies.similar() or []
+        all_items += self.tvshows.similar() or []
+        all_items += self.albums.similar() or []
+        all_items += self.songs.similar() or []
         return sorted(all_items, key=lambda k: random.random())[:self.options["limit"]]
 
     def similarshowsandmovies(self):
         ''' get similar movies and similar tvshows for given imdbid'''
-        all_items = self.movies.similar()
-        all_items += self.tvshows.similar()
+        all_items = self.movies.similar() or []
+        all_items += self.tvshows.similar() or []
         return sorted(all_items, key=lambda k: random.random())[:self.options["limit"]]
 
     def inprogressandrecommended(self):
